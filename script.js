@@ -1,63 +1,70 @@
-//GET user Name
-let userName = prompt("what is your name?")
-let responseImg = document.getElementById('response-img')
-let responseText = document.getElementById('response-text')
-let greeting = document.getElementById('greeting')
+// Get user name
+let userName = prompt("What is your name?");
+let responseImg = document.getElementById("response-img");
+let responseText = document.getElementById("response-text");
+let greeting = document.getElementById("greeting");
 
-//Get user Name to Website
+// Display greeting
 userName
-    ? (greeting.innerText = `Hello, ${userName}!`)
-    : (greeting.innerText = 'Hello Stranger!')
+	? (greeting.innerText = `Hello, ${userName}!`)
+	: (greeting.innerText = "Hello Stranger!");
 
 function shakeMagic8Ball() {
-    //Get User Question
-    let userQuestion = prompt('What do you want to ask the 8 Ball?')
+	// Add shake animation
+	responseImg.classList.add("shake");
+	setTimeout(() => {
+		responseImg.classList.remove("shake");
+	}, 1000);
 
-    //DO NOT TOUCH THIS CODE!
-    let randomNumber = Math.floor(Math.random() * 8);
+	// Get user question
+	let userQuestion = prompt("What do you want to ask the 8 Ball?");
+	if (!userQuestion) {
+		alert("Please ask a question.");
+		return;
+	}
 
-    let eightBall = '';
-    let imageChoice = ''
+	// Generate random response
+	let randomNumber = Math.floor(Math.random() * 8);
+	let eightBall = "";
+	let imageChoice = "";
 
-    switch (randomNumber) {
-        case 0:
-            eightBall = 'It is certain.';
-            imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-        case 1:
-            eightBall = 'It is decidely so.';
-                        imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-        case 2:
-            eightBall = 'Reply hazy try again.';
-                        imageChoice = 'image3.jpg'
-            break;
-        case 3:
-            eightBall = 'Cannot predict now.';
-                        imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-        case 4:
-            eightBall = 'Do not count on it.';
-                        imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-        case 5:
-            eightBall = 'My sources say no.';
-                        imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-        case 6:
-            eightBall = 'Outlook not so good.';
-                        imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-        case 7:
-            eightBall = 'Signs point to yes.';
-                        imageChoice = 'https://picsum.photos/id/684/600/400'
-            break;
-    }
+	switch (randomNumber) {
+		case 0:
+			eightBall = "It is certain.";
+			imageChoice = "images/ITISCERTAIN.gif";
+			break;
+		case 1:
+			eightBall = "It is decidedly so.";
+			imageChoice = "images/ITISDECIDEDLYSO.gif";
+			break;
+		case 2:
+			eightBall = "Reply hazy try again.";
+			imageChoice = "images/REPLYHAZY.gif";
+			break;
+		case 3:
+			eightBall = "Cannot predict now.";
+			imageChoice = "images/CANNOTPREDICTNOW.gif";
+			break;
+		case 4:
+			eightBall = "Do not count on it.";
+			imageChoice = "images/DONTCOUNTONIT.gif";
+			break;
+		case 5:
+			eightBall = "My sources say no.";
+			imageChoice = "images/MYSOURCESSAYNO.gif";
+			break;
+		case 6:
+			eightBall = "Outlook not so good.";
+			imageChoice = "images/OUTLOOKNOTSOGOOD.gif";
+			break;
+		case 7:
+			eightBall = "Signs point to yes.";
+			imageChoice = "images/YES.gif";
+			break;
+	}
 
-    console.log(`The Magic 8 Ball says ${eightBall}`)
+	console.log(`The Magic 8 Ball says: ${eightBall}`);
 
-    responseText.innerText = `${userName} has asked ${userQuestion} to the almighty 8 Ball. The 8 Ball has replied ${eightBall}!`
-
-    responseImg.src = imageChoice
-
+	responseText.innerText = `${userName} asked: "${userQuestion}". The 8 Ball says: "${eightBall}"!`;
+	responseImg.src = imageChoice;
 }
